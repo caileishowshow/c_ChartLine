@@ -14,6 +14,7 @@
 		F7EE64351B4E582600C02A34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EE64341B4E582600C02A34 /* Images.xcassets */; };
 		F7EE64381B4E582600C02A34 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7EE64361B4E582600C02A34 /* LaunchScreen.xib */; };
 		F7EE64441B4E582700C02A34 /* c_ChartLineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EE64431B4E582700C02A34 /* c_ChartLineTests.m */; };
+		F7EE64521B4E5F7200C02A34 /* ChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EE64511B4E5F7200C02A34 /* ChartLineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		F7EE643D1B4E582700C02A34 /* c_ChartLineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = c_ChartLineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EE64421B4E582700C02A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7EE64431B4E582700C02A34 /* c_ChartLineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = c_ChartLineTests.m; sourceTree = "<group>"; };
+		F7EE64501B4E5F7200C02A34 /* ChartLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartLineView.h; sourceTree = "<group>"; };
+		F7EE64511B4E5F7200C02A34 /* ChartLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartLineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				F7EE64341B4E582600C02A34 /* Images.xcassets */,
 				F7EE64361B4E582600C02A34 /* LaunchScreen.xib */,
 				F7EE64271B4E582600C02A34 /* Supporting Files */,
+				F7EE64501B4E5F7200C02A34 /* ChartLineView.h */,
+				F7EE64511B4E5F7200C02A34 /* ChartLineView.m */,
 			);
 			path = c_ChartLine;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				F7EE64301B4E582600C02A34 /* ViewController.m in Sources */,
 				F7EE642D1B4E582600C02A34 /* AppDelegate.m in Sources */,
 				F7EE642A1B4E582600C02A34 /* main.m in Sources */,
+				F7EE64521B4E5F7200C02A34 /* ChartLineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +422,7 @@
 				F7EE64491B4E582700C02A34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7EE644A1B4E582700C02A34 /* Build configuration list for PBXNativeTarget "c_ChartLineTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +431,7 @@
 				F7EE644C1B4E582700C02A34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
