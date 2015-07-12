@@ -10,7 +10,8 @@
 
 @implementation ChartLineView{
     NSArray *left_titles;
-    NSArray *buttom_titles;
+    NSArray *dataArray;//结果数组
+    Float32 up,down;//两个值，上边界和下边界
 }
 
 
@@ -33,7 +34,14 @@
 - (void)drawRect:(CGRect)rect {
     
     left_titles = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7"];
-    buttom_titles = @[@"7/1",@"7/2",@"7/3",@"7/4",@"7/5",@"7/6",@"7/7"];
+    
+    up = 15.5;
+    down = 8.5;
+    
+    dataArray = @[@{@"value":@"15.5",@"data":@"7/1"},@{@"value":@"10.2",@"data":@"7/2"},@{@"value":@"10.2",@"data":@"7/3"},@{@"value":@"10.2",@"data":@"7/4"},@{@"value":@"11",@"data":@"7/5"},@{@"value":@"10.2",@"data":@"7/6"},@{@"value":@"9",@"data":@"7/7"}];
+    
+    
+   
     //整个框架的宽高
     CGFloat availableWidth = self.bounds.size.width-2*PADDING-LEFT_SCALE;//宽
     CGFloat availableHeight = self.bounds.size.height - 2*PADDING-BUTTOM_SCALE;//高
@@ -71,10 +79,37 @@
         [left_title drawInRect:CGRectMake(PADDING+20, PADDING+(i*availableHeight)/(x-1)-10, LEFT_SCALE, 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     }
     //再画底下的刻度
-    for (int i=0; i<[buttom_titles count]; i++) {
-        NSString *buttom_title = buttom_titles[i];
+    for (int i=0; i<[dataArray count]; i++) {
+        NSString *buttom_title = dataArray[i][@"data"];
         [buttom_title drawInRect:CGRectMake(xStart+(i*availableWidth)/(y-1)-15, PADDING+availableHeight+2, 30, BUTTOM_SCALE) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     }
+    //第三部 画点
+    for (int i=0; i<[dataArray count]; i++) {
+        Float32 count_num = [dataArray[i][@"value"] floatValue];
+        CGContextSetFillColorWithColor(c, [[UIColor redColor] CGColor]);
+        CGContextFillEllipseInRect(c, CGRectMake(xStart+(i*availableWidth)/(y-1)-3, (1-(count_num/(up)))*availableHeight+PADDING-3, 5, 5));
+    }
+    
+    //第四部 把点连成线
+    
+    
+    for (int i=0; i<y-1; i++) {
+        CGMutablePathRef path = CGPathCreateMutable();//句柄
+        CGPathMoveToPoint(path, NULL, xStart+(i*availableWidth)/(y-1), (1-([dataArray[i][@"value"] floatValue]/(up)))*availableHeight+PADDING);
+        CGPathAddLineToPoint(path, NULL, xStart+((i+1)*availableWidth)/(y-1), (1-([dataArray[i+1][@"value"] floatValue]/(up)))*availableHeight+PADDING);
+        CGContextAddPath(c, path);
+        CGContextSetStrokeColorWithColor(c, [[UIColor darkGrayColor] CGColor]);//设置颜色
+        CGContextStrokePath(c);
+        CGPathRelease(path);
+    }
+    
+    
+//    CGMutablePathRef path = CGPathCreateMutable();//句柄
+//    
+//    
+//    
+//    //移动到第一个点的位置
+
 }
 
 
